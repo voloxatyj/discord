@@ -7,13 +7,13 @@ import { useParams, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { ActionTooltip } from "@/components/action-tooltip";
 
-interface NavigationItemProps {
+interface INavigationItemProps {
 	id: string;
 	imageUrl: string;
 	name: string;
 }
 
-export const NavigationItem: FC<NavigationItemProps> = ({
+export const NavigationItem: FC<INavigationItemProps> = ({
 	id,
 	imageUrl,
 	name,
