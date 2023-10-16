@@ -1,8 +1,9 @@
-import { currentUser, redirectToSignIn } from '@clerk/nextjs';
+import { auth, currentUser, redirectToSignIn } from '@clerk/nextjs';
 
 import { db } from '@/lib/db';
+import { Profile } from '@prisma/client';
 
-export const initialProfile = async () => {
+export const initialProfile = async (): Promise<Profile> => {
 	const user = await currentUser();
 
 	if (!user) {
@@ -29,4 +30,20 @@ export const initialProfile = async () => {
 	});
 
 	return newProfile;
+};
+
+export const currentProfile = async (): Promise<Profile | null> => {
+	const { userId } = auth();
+
+	if (!userId) {
+		return null;
+	}
+
+	const profile = await db.profile.findUnique({
+		where: {
+			userId,
+		},
+	});
+
+	return profile;
 };
