@@ -1,17 +1,25 @@
 import { create } from 'zustand';
 
-export type TModalType = 'createServer';
+import { Server } from '@prisma/client';
+
+export type TModalType = 'createServer' | 'invite';
+
+interface IModalData {
+	server?: Server
+}
 
 interface IModalStore {
 	type: TModalType | null;
+	data: IModalData;
 	isOpen: boolean;
-	onOpen: (type: TModalType) => void;
+	onOpen: (type: TModalType, data?: IModalData) => void;
 	onClose: () => void;
 }
 
 export const useModal = create<IModalStore>((set) => ({
 	type: null,
+	data: {},
 	isOpen: false,
-	onOpen: (type) => set({ isOpen: true, type }),
+	onOpen: (type, data = {}) => set({ isOpen: true, type, data }),
 	onClose: () => set({ type: null, isOpen: false }),
 }));

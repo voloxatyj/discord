@@ -1,7 +1,9 @@
-import { auth, currentUser, redirectToSignIn } from '@clerk/nextjs';
+import { auth, currentUser, redirectToSignIn } from "@clerk/nextjs";
 
-import { db } from '@/lib/db';
-import { Profile } from '@prisma/client';
+import { db } from "@/lib/db";
+import { Profile } from "@prisma/client";
+
+export type TGetProfile = "initialProfile" | "currentProfile";
 
 export const initialProfile = async (): Promise<Profile> => {
 	const user = await currentUser();
