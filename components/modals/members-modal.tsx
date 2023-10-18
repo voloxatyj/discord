@@ -48,7 +48,7 @@ const roleIconMap = {
 export const MembersModal: FC = () => {
 	const router = useRouter();
 	const { onOpen, isOpen, onClose, type, data } = useModal();
-	const [loadingId, setLoadingId] = useState<string>("");
+	const [loadingId, setLoadingId] = useState("");
 
 	const isOpenModal = isOpen && type === "members";
 	const { server } = data as { server: TServerWithMembersWithProfiles };

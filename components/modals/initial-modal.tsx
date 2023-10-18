@@ -37,7 +37,7 @@ const formSchema = z.object({
 });
 
 export const InitialModal = () => {
-	const [isMounted, setIsMounted] = useState<boolean>(false);
+	const [isMounted, setIsMounted] = useState(false);
 	const router = useRouter();
 
 	useEffect(() => {
