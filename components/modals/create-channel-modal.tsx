@@ -1,11 +1,13 @@
 "use client";
 
+import { FC, useEffect } from "react";
 import qs from "query-string";
 import axios from "axios";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useModal } from "@/hooks/use-modal-store";
 import { useForm } from "react-hook-form";
+
 import { ChannelType } from "@prisma/client";
 
 import { useParams, useRouter } from "next/navigation";
@@ -47,19 +49,33 @@ const formSchema = z.object({
 	type: z.nativeEnum(ChannelType),
 });
 
-export const CreateChannelModal = () => {
-	const { isOpen, onClose, type } = useModal();
+export const CreateChannelModal: FC = () => {
+	const {
+		isOpen,
+		onClose,
+		type,
+		data: { channelType },
+	} = useModal();
 	const router = useRouter();
 	const params = useParams();
 	const isOpenModal = isOpen && type === "createChannel";
+	console.log("channelType", channelType);
 
 	const form = useForm({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
 			name: "",
-			type: ChannelType.TEXT,
+			type: channelType || ChannelType.TEXT,
 		},
 	});
+
+	useEffect(() => {
+		if (channelType) {
+			form.setValue("type", channelType);
+		} else {
+			form.setValue("type", ChannelType.TEXT);
+		}
+	}, [channelType, form]);
 
 	const isLoading = form.formState.isSubmitting;
 

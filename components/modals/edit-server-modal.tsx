@@ -1,10 +1,11 @@
 "use client";
 
 import { FC, useEffect } from "react";
+import axios from "axios";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useModal } from "@/hooks/use-modal-store";
 import { useForm } from "react-hook-form";
-import axios from "axios";
 
 import {
 	Dialog,
@@ -25,8 +26,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { FileUpload } from "@/components/file-upload";
+
 import { useRouter } from "next/navigation";
-import { useModal } from "@/hooks/use-modal-store";
 
 const formSchema = z.object({
 	name: z.string().min(3, {

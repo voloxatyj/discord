@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useState, useId } from "react";
+import { FC, useEffect, useState } from "react";
+import axios from "axios";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import axios from "axios";
 
 import {
 	Dialog,
@@ -25,6 +25,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { FileUpload } from "@/components/file-upload";
+
 import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
@@ -36,7 +37,7 @@ const formSchema = z.object({
 	}),
 });
 
-export const InitialModal = () => {
+export const InitialModal: FC = () => {
 	const [isMounted, setIsMounted] = useState(false);
 	const router = useRouter();
 

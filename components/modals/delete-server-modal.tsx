@@ -1,8 +1,7 @@
 "use client";
 
+import { FC, useState } from "react";
 import axios from "axios";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { useModal } from "@/hooks/use-modal-store";
 
 import {
@@ -15,7 +14,9 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 
-export const DeleteServerModal = () => {
+import { useRouter } from "next/navigation";
+
+export const DeleteServerModal: FC = () => {
 	const { onOpen, isOpen, onClose, type, data } = useModal();
 	const [isLoading, setIsLoading] = useState(false);
 	const router = useRouter();

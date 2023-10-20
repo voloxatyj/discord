@@ -1,9 +1,11 @@
 "use client";
 
+import { FC } from "react";
 import * as z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
 import axios from "axios";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useModal } from "@/hooks/use-modal-store";
+import { useForm } from "react-hook-form";
 
 import {
 	Dialog,
@@ -24,8 +26,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { FileUpload } from "@/components/file-upload";
+
 import { useRouter } from "next/navigation";
-import { useModal } from "@/hooks/use-modal-store";
 
 const formSchema = z.object({
 	name: z.string().min(3, {
@@ -36,7 +38,7 @@ const formSchema = z.object({
 	}),
 });
 
-export const CreateServerModal = () => {
+export const CreateServerModal: FC = () => {
 	const { isOpen, onClose, type } = useModal();
 	const router = useRouter();
 	const isOpenModal = isOpen && type === "createServer";
