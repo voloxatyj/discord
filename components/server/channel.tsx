@@ -32,7 +32,7 @@ export const ServerChannel: FC<IServerChannelProps> = ({
 	const Icon = iconMapServerChannel[channel.type];
 
 	const handleChannelPage = () => {
-		router.push(`/servers/${params.serverId}/channels/${channel.id}`);
+		router.push(`/servers/${params?.serverId}/channels/${channel.id}`);
 	};
 
 	const handleButtonAction = (

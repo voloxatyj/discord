@@ -5,11 +5,11 @@ import { currentProfile } from "@/lib/profile";
 import { ChannelType, Profile } from "@prisma/client";
 
 import { iconMapServerSidebar, roleIconMap } from "@/components/constant-icons";
-import { ServerChannel } from "@/components/server/server-channel";
-import { ServerHeader } from "@/components/server/server-header";
-import { ServerMember } from "@/components/server/server-member";
-import { ServerSearch } from "@/components/server/server-search";
-import { ServerSection } from "@/components/server/server-section";
+import { ServerChannel } from "@/components/server/channel";
+import { ServerHeader } from "@/components/server/header";
+import { ServerMember } from "@/components/server/member";
+import { ServerSearch } from "@/components/server/search";
+import { ServerSection } from "@/components/server/section";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 
