@@ -7,6 +7,8 @@ interface IModalData {
 	server?: Server;
 	channel?: Channel;
 	channelType?: ChannelType;
+	apiUrl?: string;
+	query?: Record<string, any>;
 }
 
 interface IModalStore {
