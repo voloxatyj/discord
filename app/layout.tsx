@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/providers/theme";
 import { ModalProvider } from "@/components/providers/modal";
 import { SocketProvider } from "@/components/providers/socket";
+import { QueryProvider } from "@/components/providers/query";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,7 +34,7 @@ export default function RootLayout({
 					>
 						<SocketProvider>
 							<ModalProvider />
-							{children}
+							<QueryProvider>{children}</QueryProvider>
 						</SocketProvider>
 					</ThemeProvider>
 				</body>
