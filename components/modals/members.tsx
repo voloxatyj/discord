@@ -3,7 +3,7 @@
 import { FC, useState } from "react";
 import axios from "axios";
 import qs from "query-string";
-import { useModal } from "@/hooks/use-modal-store";
+import { useModal } from "@/hooks/modal-store";
 
 import { TServerWithMembersWithProfiles } from "@/types";
 import { MemberRole } from "@prisma/client";

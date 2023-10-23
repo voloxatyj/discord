@@ -5,7 +5,7 @@ import qs from "query-string";
 import axios from "axios";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useModal } from "@/hooks/use-modal-store";
+import { useModal } from "@/hooks/modal-store";
 import { useForm } from "react-hook-form";
 
 import { ChannelType } from "@prisma/client";

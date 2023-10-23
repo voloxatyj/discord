@@ -6,7 +6,7 @@ import { getOrCreateConversation } from "@/lib/conversation";
 
 import { redirect } from "next/navigation";
 import { redirectToSignIn } from "@clerk/nextjs";
-import { ChatHeader } from "@/components/chat/chat-header";
+import { ChatHeader } from "@/components/chat/header";
 
 interface IMemberIdPage {
 	params: {

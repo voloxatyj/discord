@@ -1,7 +1,7 @@
 "use client";
 
 import { FC } from "react";
-import { useModal } from "@/hooks/use-modal-store";
+import { useModal } from "@/hooks/modal-store";
 
 import { MemberRole } from "@prisma/client";
 import { TServerWithMembersWithProfiles } from "@/types";

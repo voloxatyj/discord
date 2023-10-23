@@ -1,8 +1,10 @@
 "use client";
+
 import { FC, useState } from "react";
 import axios from "axios";
-import { useOrigin } from "@/hooks/use-origin";
-import { useModal } from "@/hooks/use-modal-store";
+
+import { useOrigin } from "@/hooks/origin";
+import { useModal } from "@/hooks/modal-store";
 
 import {
 	Dialog,

@@ -2,7 +2,7 @@
 
 import { FC, useState } from "react";
 import axios from "axios";
-import { useModal } from "@/hooks/use-modal-store";
+import { useModal } from "@/hooks/modal-store";
 
 import {
 	Dialog,

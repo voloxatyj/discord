@@ -3,7 +3,7 @@
 import { FC, useState } from "react";
 import qs from "query-string";
 import axios from "axios";
-import { useModal } from "@/hooks/use-modal-store";
+import { useModal } from "@/hooks/modal-store";
 
 import {
 	Dialog,
