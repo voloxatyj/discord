@@ -16,7 +16,8 @@ export type TModalType =
 	| "deleteServer"
 	| "deleteChannel"
 	| "editChannel"
-	| "messageFile";
+	| "messageFile" 
+	|	"deleteMessage";
 
 export type TNextApiResponseServerIO = NextApiResponse & {
 	socket: Socket & {

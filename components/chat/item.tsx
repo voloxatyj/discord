@@ -3,6 +3,7 @@
 import { FC, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useModal } from "@/hooks/modal-store";
 import { cn } from "@/lib/utils";
 
 import * as z from "zod";
@@ -53,8 +54,8 @@ export const ChatItem: FC<IChatItemProps> = ({
 	socketQuery,
 	socketUrl,
 }) => {
+	const { onOpen } = useModal();
 	const [isEditing, setIsEditing] = useState(false);
-	const [isDeleting, setIsDeleting] = useState(false);
 
 	useEffect(() => {
 		const handleKeyDown = (event: KeyboardEvent) => {
@@ -221,7 +222,15 @@ export const ChatItem: FC<IChatItemProps> = ({
 					)}
 					{canDeleteMessage && (
 						<ActionTooltip label="Delete">
-							<Trash className="cursor-pointer ml-auto w-4 h-4 text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-300 transition" />
+							<Trash
+								onClick={() =>
+									onOpen("deleteMessage", {
+										apiUrl: `${socketUrl}/${id}`,
+										query: socketQuery,
+									})
+								}
+								className="cursor-pointer ml-auto w-4 h-4 text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-300 transition"
+							/>
 						</ActionTooltip>
 					)}
 				</div>
