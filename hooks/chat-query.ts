@@ -1,4 +1,3 @@
-import { FC } from 'react';
 
 import qs from "query-string";
 
