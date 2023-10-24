@@ -10,6 +10,7 @@ import { ChatWelcome } from "@/components/chat/welcome";
 import { ChatItem } from "@/components/chat/item";
 
 import { Loader2, ServerCrash } from "lucide-react";
+import { useChatSocket } from "@/hooks/chat-socket";
 
 type TMessageWithMemberWithProfile = Message & {
 	member: Member & {
@@ -41,6 +42,8 @@ export const ChatMessages: FC<IChatMessagesProps> = ({
 	type,
 }) => {
 	const queryKey = `chat:${chatId}`;
+	const addKey = `chat:${chatId}:messages`;
+	const updateKey = `chat:${chatId}:messages:update`;
 
 	const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status } =
 		useChatQuery({
@@ -49,6 +52,7 @@ export const ChatMessages: FC<IChatMessagesProps> = ({
 			paramKey,
 			paramValue,
 		});
+	useChatSocket({ queryKey, addKey, updateKey });
 
 	if (status === "loading") {
 		return (
@@ -78,31 +82,24 @@ export const ChatMessages: FC<IChatMessagesProps> = ({
 			<div className="flex flex-col-reverse mt-auto">
 				{data?.pages?.map((group, i) => (
 					<Fragment key={i}>
-						{group.items.map(
-							({
-								id,
-								content,
-								fileUrl,
-								deleted,
-								createdAt,
-								updatedAt,
-								member,
-							}: TMessageWithMemberWithProfile) => (
-								<ChatItem
-									key={id}
-									id={id}
-									currentMember={member}
-									member={member}
-									content={content}
-									fileUrl={fileUrl}
-									deleted={deleted}
-									timestamp={format(new Date(createdAt), "d MMM yyyy, HH:mm")}
-									isUpdated={updatedAt !== createdAt}
-									socketUrl={socketUrl}
-									socketQuery={socketQuery}
-								/>
-							),
-						)}
+						{group.items.map((message: TMessageWithMemberWithProfile) => (
+							<ChatItem
+								key={message.id}
+								id={message.id}
+								currentMember={member}
+								member={message.member}
+								content={message.content}
+								fileUrl={message.fileUrl}
+								deleted={message.deleted}
+								timestamp={format(
+									new Date(message.createdAt),
+									"d MMM yyyy, HH:mm",
+								)}
+								isUpdated={message.updatedAt !== message.createdAt}
+								socketUrl={socketUrl}
+								socketQuery={socketQuery}
+							/>
+						))}
 					</Fragment>
 				))}
 			</div>
