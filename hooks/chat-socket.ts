@@ -1,8 +1,9 @@
-import { Message, Member, Profile } from '@prisma/client';
+import { useEffect } from "react";
 
-import { useSocket } from '@/components/providers/socket';
-import { useQueryClient } from '@tanstack/react-query';
-import { useEffect } from 'react';
+import { Message, Member, Profile } from "@prisma/client";
+
+import { useSocket } from "@/components/providers/socket";
+import { useQueryClient } from "@tanstack/react-query";
 
 type TChatSocketProps = {
 	addKey: string;

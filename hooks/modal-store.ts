@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 import { Server, ChannelType, Channel } from "@prisma/client";
-import { TModalType } from '@/types';
+import { TModalType } from "@/types";
 
 interface IModalData {
 	server?: Server;
