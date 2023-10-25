@@ -6,7 +6,10 @@ import { getOrCreateConversation } from "@/lib/conversation";
 
 import { redirect } from "next/navigation";
 import { redirectToSignIn } from "@clerk/nextjs";
+
 import { ChatHeader } from "@/components/chat/header";
+import { ChatMessages } from "@/components/chat/messages";
+import { ChatInput } from "@/components/chat/input";
 
 interface IMemberIdPage {
 	params: {
@@ -53,6 +56,25 @@ const MemberIdPage: FC<IMemberIdPage> = async ({
 				name={otherMember.profile.name}
 				serverId={serverId}
 				type="conversation"
+			/>
+			<ChatMessages
+				member={currentMember}
+				name={otherMember.profile.name}
+				chatId={conversation.id}
+				type="conversation"
+				apiUrl="/api/direct-messages"
+				paramKey="conversationId"
+				paramValue={conversation.id}
+				socketUrl="/api/socket/direct-messages"
+				socketQuery={{ conversationId: conversation.id }}
+			/>
+			<ChatInput
+				name={otherMember.profile.name}
+				type="conversation"
+				apiUrl="/api/socket/direct-messages"
+				query={{
+					conversationId: conversation.id,
+				}}
 			/>
 		</div>
 	);

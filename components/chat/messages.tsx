@@ -70,7 +70,7 @@ export const ChatMessages: FC<IChatMessagesProps> = ({
 			<div className="flex flex-col flex-1 justify-center items-center">
 				<Loader2 className="h-7 w-7 text-zinc-500 animate-spin my-4" />
 				<p className="text-xs text-zinc-500 dark:text-zinc-400">
-					Hold your horses we are loading messages...
+					Hold your horses, we are loading messages...
 				</p>
 			</div>
 		);
@@ -81,7 +81,7 @@ export const ChatMessages: FC<IChatMessagesProps> = ({
 			<div className="flex flex-col flex-1 justify-center items-center">
 				<ServerCrash className="h-7 w-7 text-zinc-500 my-4" />
 				<p className="text-xs text-zinc-500 dark:text-zinc-400">
-					Houston we got a problem!
+					Houston, we got a problem!
 				</p>
 			</div>
 		);
@@ -99,7 +99,7 @@ export const ChatMessages: FC<IChatMessagesProps> = ({
 							onClick={() => fetchNextPage()}
 							className="text-zinc-500 hover:text-zinc-600 dark:text-zinc-400 text-xs my-4 dark:hover:text-zinc-300 transition"
 						>
-							Josyp dranyi we have more messages
+							Josyp dranyi! We have more messages
 						</button>
 					)}
 				</div>
